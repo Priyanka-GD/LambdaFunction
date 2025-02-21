@@ -151,7 +151,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "14d01e33450dc5a829e66ab797f79445c9dfa68d465e693fe35e0c56a16dd45a.jar"
+                      "s3Key": "b8840941ea060b5a89e8259af629d09ae467e12ace224b9e5b9f6d788f7ac8d6.jar"
                     },
                     "handler": "org.example.lambda.LambdaHandler::handleRequest",
                     "memorySize": 512,

@@ -63,6 +63,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import software.amazon.awssdk.core.SdkBytes;
+import org.json.JSONObject;
 
 public class LambdaHandler implements RequestHandler<Map<String, Object>, Map<String, Object>> {
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -83,7 +84,7 @@ public class LambdaHandler implements RequestHandler<Map<String, Object>, Map<St
                 String requestBody = (String) event.get("body");
                 if (requestBody != null && !requestBody.isEmpty()) {
                     ChatRequest chatRequest = objectMapper.readValue(requestBody, ChatRequest.class);
-                    receivedText = chatRequest.getText();
+                    receivedText = chatRequest.getInputText();
                     bedrockResponse = callAmazonBedrock(receivedText, context);
                 }
             }
@@ -100,15 +101,19 @@ public class LambdaHandler implements RequestHandler<Map<String, Object>, Map<St
                 .region(Region.US_EAST_1)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build()) {
-            String modelInput = "{ \"prompt\": \"" + userMessage + "\", \"max_tokens\": 100 }";
-            SdkBytes sdkBytes = SdkBytes.fromByteArray(modelInput.getBytes(StandardCharsets.UTF_8));
+            String modelInput = "{ \"inputText\": \"" + userMessage + "\"}";
+            SdkBytes sdkBytes = SdkBytes.fromUtf8String(modelInput);
 
             InvokeModelRequest request = InvokeModelRequest.builder()
                     .modelId("amazon.titan-text-premier-v1:0")
                     .body(sdkBytes)
                     .build();
             InvokeModelResponse response = bedrockClient.invokeModel(request);
-            return new String(response.body().asByteArray(), StandardCharsets.UTF_8);
+            String responseBody =  new String(response.body().asByteArray(), StandardCharsets.UTF_8);
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            return jsonResponse.getJSONArray("results")
+                    .getJSONObject(0)
+                    .getString("outputText");
         } catch (Exception e) {
             context.getLogger().log("Bedrock API call failed: " + e.getMessage());
             return "Error fetching AI response";

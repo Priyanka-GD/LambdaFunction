@@ -2,16 +2,16 @@ package org.example.model;
 
 
 public class ChatRequest {
-    private String text;
+    private String inputText;
 
     public ChatRequest() {
     }
 
-    public String getText() {
-        return text;
+    public String getInputText() {
+        return inputText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setInputText(String text) {
+        this.inputText = text;
     }
 }
