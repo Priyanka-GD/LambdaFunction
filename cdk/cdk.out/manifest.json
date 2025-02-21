@@ -1,0 +1,173 @@
+{
+  "version": "39.0.0",
+  "artifacts": {
+    "MyCdkProjectStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MyCdkProjectStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MyCdkProjectStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "MyCdkProjectStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08a33c537e042a42f9d773cbf2ffbb1e97866222770e14b07cc28860e4122f1c.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MyCdkProjectStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "MyCdkProjectStack.assets"
+      ],
+      "metadata": {
+        "/MyCdkProjectStack/MyJavaLambdaFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyJavaLambdaFunctionServiceRole95B8D940"
+          }
+        ],
+        "/MyCdkProjectStack/MyJavaLambdaFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyJavaLambdaFunctionServiceRoleDefaultPolicy0BA59C7C"
+          }
+        ],
+        "/MyCdkProjectStack/MyJavaLambdaFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyJavaLambdaFunctionCE2C3FB4"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGateway04A753E5"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayCloudWatchRoleD56CBB1D"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayAccount7AB4232E"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayDeployment44AAC0319561d9e23b880de3db54a892daab1cda"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayDeploymentStageprodEBC77C1B"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayEndpoint84AE9DBF"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayproxyB12FA60D"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/{proxy+}/ANY/ApiPermission.MyCdkProjectStackMyApiGateway2A1328A5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayproxyANYApiPermissionMyCdkProjectStackMyApiGateway2A1328A5ANYproxy7C4B37EC"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/{proxy+}/ANY/ApiPermission.Test.MyCdkProjectStackMyApiGateway2A1328A5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayproxyANYApiPermissionTestMyCdkProjectStackMyApiGateway2A1328A5ANYproxyA6E20CC0"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayproxyANY9109CCAE"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/ANY/ApiPermission.MyCdkProjectStackMyApiGateway2A1328A5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayANYApiPermissionMyCdkProjectStackMyApiGateway2A1328A5ANYECBC86B3"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/ANY/ApiPermission.Test.MyCdkProjectStackMyApiGateway2A1328A5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayANYApiPermissionTestMyCdkProjectStackMyApiGateway2A1328A5ANYAF302B0A"
+          }
+        ],
+        "/MyCdkProjectStack/MyApiGateway/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyApiGatewayANY5F397525"
+          }
+        ],
+        "/MyCdkProjectStack/ApiGatewayUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiGatewayUrl"
+          }
+        ],
+        "/MyCdkProjectStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MyCdkProjectStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/MyCdkProjectStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/MyCdkProjectStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "MyCdkProjectStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
